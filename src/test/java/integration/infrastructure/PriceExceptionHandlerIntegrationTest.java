@@ -1,7 +1,6 @@
 package integration.infrastructure;
 
 import com.price.Application;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,7 +13,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Transactional
 @ActiveProfiles("test")
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
@@ -25,10 +23,12 @@ class PriceExceptionHandlerIntegrationTest {
 
     @Test
     void testHandlePriceException() throws Exception {
+        // Given
         String errorMessage = "Custom error message";
         String date = "2020-06-14T10:00:00";
         long productId = 35455L;
         long brandId = 1L;
+        // When and Then
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(
                                 "/api/v1/price")
                         .param("date", date)
@@ -41,6 +41,7 @@ class PriceExceptionHandlerIntegrationTest {
 
     @Test
     void testHandleGenericException() throws Exception {
+        // When and Then
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(
                                 "/api/v1/price")
                         .contentType(MediaType.APPLICATION_JSON))

@@ -10,10 +10,8 @@ class PriceExceptionTest {
     void testPriceExceptionMessage() {
         // Given
         String errorMessage = "An error occurred while processing the price";
-
         // When
         PriceException exception = new PriceException(errorMessage);
-
         // Then
         assertThat(exception).isNotNull();
         assertThat(exception.getMessage()).isEqualTo(errorMessage);

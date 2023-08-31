@@ -23,9 +23,8 @@ class PriceTest {
         int priority = 0;
         double price = 35.50;
         String curr = "EUR";
-
+        // When
         Price priceEntity = PriceMother.priceOne();
-
         // Then
         assertThat(priceEntity.getBrand()).isEqualTo(brand);
         assertThat(priceEntity.getStartDate()).isEqualTo(startDate);

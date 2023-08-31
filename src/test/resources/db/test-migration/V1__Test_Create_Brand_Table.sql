@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS brand (
+  brand_id BIGINT PRIMARY KEY,
+  brand_name VARCHAR(255) NOT NULL
+);

@@ -3,7 +3,6 @@ package integration.infrastructure;
 import com.price.Application;
 import com.price.application.PriceQueryByProductAndBrand;
 import com.price.domain.dto.PriceCommand;
-import jakarta.transaction.Transactional;
 import mother.PriceCommandMother;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,6 @@ import java.time.format.DateTimeFormatter;
 
 import static org.junit.Assert.assertEquals;
 
-@Transactional
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -37,10 +35,12 @@ public class PriceControllerIntegrationTest {
 
     @Test
     public void testGetPriceForProductAndBrandEndpoint() {
+        // Given
         String date = "2020-06-14 16:00:00";
         Long productId = 35455L;
         Long brandId = 1L;
         PriceCommand expectedResponse = PriceCommandMother.generatePriceCommand();
+        // When and Then
         Mockito.when(priceQueryByProductAndBrand.execute(
                         LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                         productId,

@@ -7,7 +7,6 @@ import com.price.domain.dto.PriceCommand;
 import com.price.domain.dto.Response;
 import com.price.domain.exception.PriceException;
 import com.price.infrastructure.PriceRepository;
-import jakarta.transaction.Transactional;
 import mother.PriceCommandMother;
 import mother.PriceMother;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-@Transactional
 @ActiveProfiles("test")
 @SpringBootTest(classes = Application.class)
 class PriceQueryByProductAndBrandIntegrationTest {

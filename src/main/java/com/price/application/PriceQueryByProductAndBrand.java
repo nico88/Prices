@@ -1,10 +1,10 @@
 package com.price.application;
 
-import com.price.infrastructure.PriceRepository;
 import com.price.domain.dto.PriceCommand;
 import com.price.domain.dto.Response;
 import com.price.domain.exception.PriceException;
 import com.price.domain.model.Price;
+import com.price.infrastructure.PriceRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

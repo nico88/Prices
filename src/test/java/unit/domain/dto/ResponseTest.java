@@ -11,13 +11,11 @@ class ResponseTest {
         // Given
         String message = "Test message";
         String time = "2023-08-29T12:34:56";
-
         // When
         Response response = Response.builder()
                 .message(message)
                 .time(time)
                 .build();
-
         // Then
         assertThat(response.getMessage()).isEqualTo(message);
         assertThat(response.getTime()).isEqualTo(time);

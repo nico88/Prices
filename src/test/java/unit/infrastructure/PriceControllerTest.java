@@ -33,6 +33,7 @@ class PriceControllerTest {
 
     @Test
     void test1() {
+        // Given
         LocalDateTime dateTime = LocalDateTime.parse("2023-07-14 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         Long productId = 35455L;
         Long brandId = 1L;
@@ -45,9 +46,11 @@ class PriceControllerTest {
                 .price(35.50)
                 .curr("EUR")
                 .build();
+        // When
         when(priceQueryByProductAndBrand.execute(dateTime, productId, brandId)).thenReturn(expectedResponse);
         ResponseEntity<?> responseEntity = priceController.getPriceForProductAndBrand(
                 "2023-07-14 10:00:00", productId, brandId);
+        // Then
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         PriceCommand actualResponse = (PriceCommand) responseEntity.getBody();
@@ -58,6 +61,7 @@ class PriceControllerTest {
 
     @Test
     void test2() {
+        // Given
         LocalDateTime dateTime = LocalDateTime.parse("2023-07-14 16:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         Long productId = 35455L;
         Long brandId = 1L;
@@ -70,9 +74,11 @@ class PriceControllerTest {
                 .price(25.45)
                 .curr("EUR")
                 .build();
+        // When
         when(priceQueryByProductAndBrand.execute(dateTime, productId, brandId)).thenReturn(expectedResponse);
         ResponseEntity<?> responseEntity = priceController.getPriceForProductAndBrand(
                 "2023-07-14 16:00:00", productId, brandId);
+        // Then
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         PriceCommand actualResponse = (PriceCommand) responseEntity.getBody();
@@ -83,6 +89,7 @@ class PriceControllerTest {
 
     @Test
     void test3() {
+        // Given
         LocalDateTime dateTime = LocalDateTime.parse("2023-07-14 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         Long productId = 35455L;
         Long brandId = 1L;
@@ -95,9 +102,11 @@ class PriceControllerTest {
                 .price(35.50)
                 .curr("EUR")
                 .build();
+        // When
         when(priceQueryByProductAndBrand.execute(dateTime, productId, brandId)).thenReturn(expectedResponse);
         ResponseEntity<?> responseEntity = priceController.getPriceForProductAndBrand(
                 "2023-07-14 21:00:00", productId, brandId);
+        // Then
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         PriceCommand actualResponse = (PriceCommand) responseEntity.getBody();
@@ -108,6 +117,7 @@ class PriceControllerTest {
 
     @Test
     void test4() {
+        // Given
         LocalDateTime dateTime = LocalDateTime.parse("2023-07-15 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         Long productId = 35455L;
         Long brandId = 1L;
@@ -120,9 +130,11 @@ class PriceControllerTest {
                 .price(30.50)
                 .curr("EUR")
                 .build();
+        // When
         when(priceQueryByProductAndBrand.execute(dateTime, productId, brandId)).thenReturn(expectedResponse);
         ResponseEntity<?> responseEntity = priceController.getPriceForProductAndBrand(
                 "2023-07-15 10:00:00", productId, brandId);
+        // Then
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         PriceCommand actualResponse = (PriceCommand) responseEntity.getBody();
@@ -133,6 +145,7 @@ class PriceControllerTest {
 
     @Test
     void test5() {
+        // Given
         LocalDateTime dateTime = LocalDateTime.parse("2023-07-16 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         Long productId = 35455L;
         Long brandId = 1L;
@@ -145,10 +158,11 @@ class PriceControllerTest {
                 .price(38.95)
                 .curr("EUR")
                 .build();
-
+        // When
         when(priceQueryByProductAndBrand.execute(dateTime, productId, brandId)).thenReturn(expectedResponse);
         ResponseEntity<?> responseEntity = priceController.getPriceForProductAndBrand(
                 "2023-07-16 21:00:00", productId, brandId);
+        // Then
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         PriceCommand actualResponse = (PriceCommand) responseEntity.getBody();

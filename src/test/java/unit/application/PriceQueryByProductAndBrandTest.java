@@ -33,53 +33,55 @@ class PriceQueryByProductAndBrandTest {
 
     @Test
     void testInvoke_PriceFound_ReturnsPricesCommand() {
+        // Given
         Long productId = 35455L;
         Long brandId = 1L;
         LocalDateTime date = LocalDateTime.parse("2020-06-14 10:00:00",
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
+        // When
         Mockito.when(repository.findPricesWithPriorityByBrandAndProduct(date, productId, brandId))
                 .thenReturn(List.of(PriceMother.priceTwo(), PriceMother.priceOne()));
         Object result = priceQueryByProductAndBrand.execute(date, productId, brandId);
-
+        // Then
         assertNotNull(result);
         assertTrue(result instanceof PriceCommand);
         PriceCommand priceCommand = (PriceCommand) result;
-
         PriceCommand expectedPriceCommand = PriceCommandMother.generatePriceCommand();
         assertEquals(expectedPriceCommand, priceCommand);
     }
 
     @Test
     void testInvoke_PriceNotFound_ReturnsResponseWithMessage() {
+        // Given
         Long productId = new Random().nextLong(10000);
         Long brandId = 1L;
         LocalDateTime date = LocalDateTime.parse("2020-06-14 10:00:00",
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String expectedMessage = "No price found for the given parameters";
-
+        // When
         Mockito.when(repository.findPricesWithPriorityByBrandAndProduct(date, productId, brandId))
                 .thenReturn(Collections.emptyList());
-
         Object result = priceQueryByProductAndBrand.execute(date, productId, brandId);
-
+        // Then
         assertNotNull(result);
         assertTrue(result instanceof Response);
         Response response = (Response) result;
-
         assertEquals(expectedMessage, response.getMessage());
         assertNotNull(response.getTime());
     }
 
     @Test
     void testInvoke_ExceptionOccurs_ThrowsPriceException() {
+        // Given
         Long productId = 35455L;
         Long brandId = 1L;
         LocalDateTime date = LocalDateTime.parse("2020-06-14 10:00:00",
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String errorMessage = "Error occurred while searching prices";
+        // When
         Mockito.when(repository.findPricesWithPriorityByBrandAndProduct(date, productId, brandId))
                 .thenThrow(new RuntimeException(errorMessage));
+        // Then
         assertThrows(PriceException.class, () -> priceQueryByProductAndBrand.execute(date, productId, brandId));
     }
 }

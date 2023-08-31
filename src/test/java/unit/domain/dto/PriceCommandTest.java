@@ -12,7 +12,6 @@ class PriceCommandTest {
     void testPriceCommandProperties() {
         // Given
         Price price = PriceMother.priceOne();
-
         // When
         PriceCommand priceCommand = PriceCommand.builder()
                 .productId(price.getProductId())
@@ -23,7 +22,6 @@ class PriceCommandTest {
                 .price(price.getPrice())
                 .curr(price.getCurr())
                 .build();
-
         // Then
         assertThat(priceCommand.getProductId()).isEqualTo(price.getProductId());
         assertThat(priceCommand.getBrandId()).isEqualTo(price.getBrand().getBrandId());

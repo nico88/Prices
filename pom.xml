@@ -82,6 +82,11 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>test</id>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
