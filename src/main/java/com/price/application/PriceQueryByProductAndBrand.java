@@ -1,6 +1,6 @@
 package com.price.application;
 
-import com.price.domain.PriceRepository;
+import com.price.infrastructure.PriceRepository;
 import com.price.domain.dto.PriceCommand;
 import com.price.domain.dto.Response;
 import com.price.domain.exception.PriceException;

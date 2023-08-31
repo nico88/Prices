@@ -1,9 +1,10 @@
-package com.price;
-
+import com.price.Application;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
+@ActiveProfiles("test")
+@SpringBootTest(classes = Application.class)
 class ApplicationTests {
 
 	@Test
